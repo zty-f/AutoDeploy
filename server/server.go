@@ -8,6 +8,10 @@ import (
 )
 
 func AutoDeploy(c *gin.Context) {
+	action := c.GetHeader("X-GitHub-Event")
+	if action == "ping" {
+		c.JSON(200, "测试webhook连接成功~")
+	}
 	err := execute()
 	if err != nil {
 		c.JSON(500, err.Error())

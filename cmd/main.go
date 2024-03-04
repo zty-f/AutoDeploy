@@ -1,6 +1,7 @@
 package main
 
 import (
+	"AutoDeploy/middleware"
 	"AutoDeploy/server"
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -14,7 +15,7 @@ func main() {
 	engine.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, "Welcome to zty project!")
 	})
-	engine.GET("/deploy", server.AutoDeploy)
+	engine.POST("/deploy", middleware.Auth(), server.AutoDeploy)
 	err := engine.Run(":8989")
 	if err != nil {
 		return
