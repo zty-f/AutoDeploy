@@ -27,6 +27,7 @@ func execute() error {
 	logFile, err := os.OpenFile("../log/deploy_exec.log", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalf("error opening file: %v", err)
+		return err
 	}
 	defer logFile.Close()
 	cmd.Stdout = logFile
