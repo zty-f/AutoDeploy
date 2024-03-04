@@ -1,10 +1,13 @@
 #!/bin/bash
 
 #print time
+# shellcheck disable=SC2046
+# shellcheck disable=SC2005
 echo $(date +"%Y-%m-%d %H:%M:%S")
 echo "项目开始部署~"
 
-cd /Users/xwx/go/src/AutoDeploy/log/
+# shellcheck disable=SC2164
+cd /root/
 
 rm -rf myblog
 
