@@ -6,6 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// curl http://localhost:8989/deploy
+
 func main() {
 	engine := gin.New()
 	engine.GET("/deploy", server.AutoDeploy)
