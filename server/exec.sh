@@ -13,7 +13,9 @@ rm -rf myblog
 
 git clone "git@github.com:zty-f/myblog.git"
 
-hexo c && hexo s
+cd myblog
+
+hexo c && hexo g
 
 hexo d
 
