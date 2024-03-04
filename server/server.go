@@ -10,6 +10,7 @@ import (
 func AutoDeploy(c *gin.Context) {
 	err := execute()
 	if err != nil {
+		c.JSON(500, err.Error())
 		return
 	}
 	c.JSON(200, "自动部署成功~~~")
