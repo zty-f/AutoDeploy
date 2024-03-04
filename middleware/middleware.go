@@ -4,6 +4,7 @@ import (
 	"crypto/hmac"
 	"crypto/sha1"
 	"encoding/hex"
+	"fmt"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,6 +16,7 @@ func Auth() gin.HandlerFunc {
 			c.Abort()
 			return
 		}
+		fmt.Println("验证签名通过~")
 		c.Next()
 	}
 }
