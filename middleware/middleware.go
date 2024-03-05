@@ -5,8 +5,29 @@ import (
 	"crypto/sha1"
 	"encoding/hex"
 	"fmt"
+	"github.com/gin-contrib/timeout"
 	"github.com/gin-gonic/gin"
+	"net/http"
+	"time"
 )
+
+// TimeoutMiddleware 超时设置
+func TimeoutMiddleware() gin.HandlerFunc {
+	return timeout.New(
+		timeout.WithTimeout(5*time.Minute),
+		timeout.WithHandler(func(c *gin.Context) {
+			c.Next()
+		}),
+		timeout.WithResponse(testResponse),
+	)
+}
+
+func testResponse(c *gin.Context) {
+	c.JSON(http.StatusGatewayTimeout, gin.H{
+		"code": http.StatusGatewayTimeout,
+		"msg":  "~timeout~",
+	})
+}
 
 // Auth 接口请求验证GitHub webhook
 func Auth() gin.HandlerFunc {

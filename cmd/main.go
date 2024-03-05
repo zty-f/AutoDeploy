@@ -8,10 +8,11 @@ import (
 )
 
 // curl http://localhost:8989/ping
-// curl http://localhost:8989/deploy
+// curl -X POST http://localhost:8989/deploy
 
 func main() {
 	engine := gin.New()
+	engine.Use(middleware.TimeoutMiddleware())
 	engine.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, "Welcome to zty project!")
 	})
