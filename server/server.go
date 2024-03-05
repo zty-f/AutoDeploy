@@ -22,7 +22,7 @@ func AutoDeploy(c *gin.Context) {
 }
 
 func execute() error {
-	cmd := exec.Command("sh", "exec.sh")
+	cmd := exec.Command("sh", "/root/AutoDeploy/server/exec.sh")
 	// 打开或创建日志文件
 	logFile, err := os.OpenFile("../log/deploy_exec.log", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
