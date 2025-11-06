@@ -10,8 +10,8 @@
 
 ```shell
 # 如果架构不匹配，需要重新编译：
-# 在本地 Mac 上编译 Linux 版本
-GOOS=linux GOARCH=amd64 go build -o deploy
+# 在本地 Mac 上编译 Linux 版本 
+GOOS=linux GOARCH=amd64 go build -o deploy 
 
 # 1. 查看当前服务文件内容
 cat /etc/systemd/system/deploy.service
@@ -28,7 +28,7 @@ After=network.target
 Type=simple
 User=root
 WorkingDir=/tmp  # 这个是工作目录，需要把代码所需的执行文件放在对应的路径里面
-ExecStart=/usr/local/bin/deploy
+ExecStart=/usr/local/bin/deploy # 这个是go编译后的执行文件的路径
 Restart=always
 RestartSec=5
 StandardOutput=journal
