@@ -11,7 +11,7 @@ cd /home/data/
 
 rm -rf myblog
 
-git clone "https://github.com/zty-f/myblog.git"
+git clone "git@github.com:zty-f/myblog.git"
 
 cd myblog
 
